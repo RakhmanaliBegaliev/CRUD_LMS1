@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -24,4 +25,7 @@ public class Course {
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "company_id")
     private Company company;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "group_id")
+    private List<Group> groups;
 }
