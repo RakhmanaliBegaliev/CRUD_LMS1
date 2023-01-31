@@ -2,10 +2,13 @@ package com.peaksoft.dao.impl;
 
 import com.peaksoft.dao.StudentDao;
 import com.peaksoft.entity.Student;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
-
+@Repository
+@Transactional
 public class StudentDaoImpl implements StudentDao {
     private EntityManager entityManager;
 
