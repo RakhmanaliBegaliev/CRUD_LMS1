@@ -40,6 +40,6 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void deleteCourse(Course course) {
-        entityManager.refresh(course);
+        entityManager.remove(entityManager.contains(course) ? course : entityManager.merge(course));
     }
 }

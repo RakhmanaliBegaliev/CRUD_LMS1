@@ -2,20 +2,198 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Peaksoft.Lms</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        a{
-            font-size: 200px;
-            color: cadetblue;
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #212121;
+        }
+
+        .react {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .react:before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 40px;
+
+            background-color: black;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate3d(-50%, -50%, 0);
+            animation: reactCircle 500ms ease-in-out backwards;
+        }
+
+        .react-ellipse {
+            width: 90%;
+            height: 110px;
+
+            border: 8px solid black;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .react-ellipse.center {
+            transform: translate3d(-50%, -50%, 0);
+            animation: reactEllipseCenter 500ms ease-in-out backwards 500ms;
+        }
+
+        .react-ellipse.left {
+            transform: translate3d(-50%, -50%, 0) rotate(60deg);
+            animation: reactEllipseLeft 500ms ease-in-out backwards 1000ms;
+        }
+
+        .react-ellipse.right {
+            transform: translate3d(-50%, -50%, 0) rotate(-60deg);
+            animation: reactEllipseRight 500ms ease-in-out backwards 1000ms;
+        }
+
+
+        @keyframes reactCircle {
+            from {
+                transform: translate3d(-50%, -50%, 0) scale(0);
+            }
+            to {
+                transform: translate3d(-50%, -50%, 0) scale(1);
+            }
+        }
+
+        @keyframes reactEllipseCenter {
+            from {
+                transform: translate3d(-50%, -50%, 0) rotateX(90deg);
+            }
+            to {
+                transform: translate3d(-50%, -50%, 0) rotateX(0deg);
+            }
+        }
+
+        @keyframes reactEllipseLeft {
+            from {
+                transform: translate3d(-50%, -50%, 0) rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(-50%, -50%, 0) rotate(60deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes reactEllipseRight {
+            from {
+                transform: translate3d(-50%, -50%, 0) rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: translate3d(-50%, -50%, 0) rotate(-60deg);
+                opacity: 1;
+            }
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        body{
+            background: white;
+        }
+        .container{
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container span{
+            color: white;
+            text-transform: uppercase;
+            display: block;
+        }
+        .text1{
+            color: white;
+            font-size: 60px;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            background: black;
+            position: relative;
+            animation: text 3s 1;
+        }
+        .text2{
+            font-size: 30px;
+            color: #9AECDB;
+            background: black;
+        }
+        @keyframes text {
+            0%{
+                color: black;
+                margin-bottom: -40px;
+            }
+        30%{
+        letter-spacing: 25px;
+            margin-bottom: -40px;
+        }
+            85%{
+                letter-spacing: 8px;
+                margin-bottom: -40px;
+            }
+
+        }
+        .btn{
+            text-align: right;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 8px 16px;
+
+            background: black;
+            border-radius: 8px;
+
+            font-family: inherit;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .btn--md{
+             font-size: 30px;
+         }
     </style>
 </head>
 <body>
-<a href="/companies" tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover"
-   data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content.
-   It's very engaging. Right?">companies</a>
+<div class="react">
+    <div class="react-ellipse center"></div>
+    <div class="react-ellipse left"></div>
+    <div class="react-ellipse right"></div>
+</div>
+<br><br>
+<div class="container">
+    <span class="text1">Welcome to</span>
+    <span class="text2">Peaksoft!</span>
+</div>
+<br><br><br><br><br><br>
+<a class="btn btn--md" href="/companies">companies</a>
+<!--<a class="btn btn&#45;&#45;md" href="/courses">courses</a>-->
+<!--<a class="btn btn&#45;&#45;md" href="/groups">groups</a>-->
+<!--<a class="btn btn&#45;&#45;md" href="/teachers">teachers</a>-->
+<!--<a class="btn btn&#45;&#45;md" href="/students">students</a>-->
+
+
 </body>
 </html>

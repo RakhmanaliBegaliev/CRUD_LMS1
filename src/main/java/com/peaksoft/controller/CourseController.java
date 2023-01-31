@@ -25,9 +25,9 @@ public class CourseController {
     @GetMapping("/addCourse")
     public String add(Model model) {
         model.addAttribute("course", new Company());
-        return "course/addCourse";
+        return "addCourse1";
     }
-    @PostMapping("/saveCoures")
+    @PostMapping("/saveCourse")
     public String save(@ModelAttribute("course")Course course){
         courseService.addCourse(course);
         return "redirect:/courses";

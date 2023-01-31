@@ -5,11 +5,13 @@ import com.peaksoft.entity.Student;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
