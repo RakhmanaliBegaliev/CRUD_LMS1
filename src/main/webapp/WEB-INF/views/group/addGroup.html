@@ -26,8 +26,6 @@
     </style>
 </head>
 <body>
-<a class="btn btn--md" href="/groups">go back</a>
-<br>
 <form th:action="@{/groups/saveGroup}"
       th:method="post"
       th:object="${group}">
@@ -48,6 +46,6 @@
     <button type="submit" class="btn btn--md">Submit</button>
 </form>
 <br><br>
-
+<a class="btn btn--md" href="/groups">go back</a>
 </body>
 </html>

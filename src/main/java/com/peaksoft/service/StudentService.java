@@ -1,5 +1,7 @@
 package com.peaksoft.service;
 
+import com.peaksoft.entity.Student;
+
 import java.util.List;
 
 public interface StudentService {

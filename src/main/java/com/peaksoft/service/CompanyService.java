@@ -17,4 +17,5 @@ public interface CompanyService {
     void deleteCompany(Company company);
 
     List<Course> getCourseByCompanyId(Long id);
+
 }

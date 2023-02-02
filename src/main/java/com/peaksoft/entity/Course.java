@@ -28,4 +28,5 @@ public class Course {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
     private List<Group> groups;
+
 }

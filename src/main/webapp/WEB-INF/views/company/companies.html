@@ -44,7 +44,7 @@
         <td th:text="${company.id}"></td>
         <td th:text="${company.companyName}"></td>
         <td th:text="${company.locatedCountry}"></td>
-        <td th:href="@{/companies/courses/{id}(id=${company.getId()})}">courses</td>
+        <td><a th:href="@{/companies/courses/{id}(id=${company.getId()})}">Courses</a></td>
         <td><a th:href="@{/companies/update/{id}(id=${company.id})}">update</a></td>
         <td><form th:method="delete" th:action="@{/companies/delete/{id}(id=${company.id})}"
         ><input type="submit" value="delete"></form>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -29,7 +27,7 @@
     </style>
 </head>
 <body>
-<form th:action="@{/companies/(id=${company.getId()})}"
+<form th:action="@{/companies/{id}(id=${company.getId()})}"
       th:method="patch"
       th:object="${company}">
     <div class="mb-3">
@@ -44,6 +42,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <br><br>
-<a class="btn btn--md" href="/">go back</a>
+<a class="btn btn--md" href="/companies/addCompany">go back</a>
 </body>
 </html>

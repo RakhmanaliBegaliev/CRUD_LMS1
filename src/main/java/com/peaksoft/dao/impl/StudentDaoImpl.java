@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
@@ -44,3 +45,5 @@ public class StudentDaoImpl implements StudentDao {
         entityManager.remove(student);
     }
 }
+
+
