@@ -44,15 +44,15 @@ public class StudentController {
     }
 
     @PatchMapping("/{id}")
-    public String updateStudent(@PathVariable("id") Long id, @ModelAttribute("group") Student student) {
+    public String updateStudent(@PathVariable("id") Long id, @ModelAttribute("student") Student student) {
         studentService.updateStudent(id, student);
-        return "redirect:/groups";
+        return "redirect:/students";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         Student student = studentService.getById(id);
         studentService.deleteStudent(student);
-        return "redirect:/groups";
+        return "redirect:/students";
     }
 }

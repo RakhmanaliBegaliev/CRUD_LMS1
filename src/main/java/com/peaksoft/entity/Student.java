@@ -21,6 +21,10 @@ public class Student {
     private String email;
     @Column(name = "last_name")
     private String lastName;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private StudyFromat studyFromat;
+//    @Transient
+//    private Long groupId;
+//    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+//    private Group group;
 }

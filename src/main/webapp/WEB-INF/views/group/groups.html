@@ -22,7 +22,7 @@
     <tbody>
     <tr th:each="group:${groups}">
         <th scope="row">1</th>
-        <td th:text="${group.id}"></td>
+<!--        <td th:text="${group.id}"></td>-->
         <td th:text="${group.groupName}"></td>
         <td th:text="${group.dateOfStart}"></td>
         <td th:text="${group.dateOfFinish}"></td>
@@ -34,7 +34,7 @@
     </tr>
     </tbody>
 </table>
-<a class="btn btn--md" href="/groups/addGroup">add Course</a>
+<a class="btn btn--md" href="/groups/addGroup">add Group</a>
 <br><br>
 <a class="btn btn--md" href="/">go back</a>
 </body>

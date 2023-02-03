@@ -3,10 +3,11 @@ package com.peaksoft.dao.impl;
 import com.peaksoft.dao.TeacherDao;
 import com.peaksoft.entity.Teacher;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Repository
@@ -28,9 +29,9 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void updateTeacher(Long id, Teacher teacher) {
         Teacher teacher1 = entityManager.find(Teacher.class, id);
-        teacher1.setFirstName(teacher1.getFirstName());
-        teacher1.setEmail(teacher1.getEmail());
-        teacher1.setLastName(teacher1.getLastName());
+        teacher1.setFirstName(teacher.getFirstName());
+        teacher1.setEmail(teacher.getEmail());
+        teacher1.setLastName(teacher.getLastName());
         entityManager.merge(teacher);
     }
 

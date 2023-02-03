@@ -14,4 +14,5 @@ public interface CourseDao {
     Course getById(Long id);
 
     void deleteCourse(Course course);
+
 }
