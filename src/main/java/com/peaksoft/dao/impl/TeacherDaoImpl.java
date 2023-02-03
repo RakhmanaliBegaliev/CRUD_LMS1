@@ -17,7 +17,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public List<Teacher> getAllTeachers() {
-        return entityManager.createQuery("from Teacher ").getResultList();
+        return entityManager.createQuery("from Teacher").getResultList();
     }
 
     @Override
@@ -28,10 +28,10 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void updateTeacher(Long id, Teacher teacher) {
         Teacher teacher1 = entityManager.find(Teacher.class, id);
-        teacher1.setFirstName(teacher.getFirstName());
-        teacher1.setLastName(teacher.getLastName());
-        teacher1.setEmail(teacher.getEmail());
-        entityManager.merge(teacher1);
+        teacher1.setFirstName(teacher1.getFirstName());
+        teacher1.setEmail(teacher1.getEmail());
+        teacher1.setLastName(teacher1.getLastName());
+        entityManager.merge(teacher);
     }
 
     @Override
@@ -41,6 +41,6 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void deleteTeacher(Teacher teacher) {
-        entityManager.remove(teacher);
+        entityManager.remove(entityManager.contains(teacher) ? teacher : entityManager.merge(teacher));
     }
 }

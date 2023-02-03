@@ -27,11 +27,11 @@ public class GroupDaoImpl implements GroupDao {
 
     @Override
     public void updateGroup(Long id, Group group) {
-        Group group1 = getById(id);
+        Group group1 = entityManager.find(Group.class, id);
         group1.setGroupName(group.getGroupName());
         group1.setDateOfStart(group.getDateOfStart());
         group1.setDateOfFinish(group.getDateOfFinish());
-        entityManager.merge(group1);
+        entityManager.merge(group);
     }
 
     @Override

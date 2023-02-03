@@ -16,7 +16,7 @@ public class CourseDaoImpl implements CourseDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Course> getAllCourse() {
+    public List<Course> getAllCourses() {
         return entityManager.createQuery("from Course").getResultList();
     }
 
@@ -27,10 +27,10 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void updateCourse(Long id, Course course) {
-        Course course1 = getById(id);
+        Course course1 = entityManager.find(Course.class, id);
         course1.setCourseName(course.getCourseName());
         course1.setDurationMonth(course.getDurationMonth());
-        entityManager.merge(course1);
+        entityManager.merge(course);
     }
 
     @Override

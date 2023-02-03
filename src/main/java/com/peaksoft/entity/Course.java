@@ -1,9 +1,6 @@
 package com.peaksoft.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,10 +11,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
     @Column(name = "course_name")
     private String courseName;
     @Column(name = "duration_month")
@@ -25,8 +25,6 @@ public class Course {
     @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "company_id")
     private Company company;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_id")
-    private List<Group> groups;
+
 
 }

@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "teachers")
-@Getter@Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -19,8 +20,5 @@ public class Teacher {
     @Column
     private String email;
     @Column(name = "last_name")
-    private String LastName;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Group group;
-
+    private String lastName;
 }

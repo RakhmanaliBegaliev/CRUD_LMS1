@@ -3,58 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <style>
-        .btn{
-            text-align: right;
-            display: inline-block;
-            vertical-align: middle;
-            padding: 8px 16px;
-
-            background: black;
-            border-radius: 8px;
-
-            font-family: inherit;
-            font-size: 16px;
-            text-decoration: none;
-            color: #fff;
-        }
-        .btn--md{
-            font-size: 15px;
-        }
-    </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
 <table class="table table-dark table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Study Format</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="student:${students}">
-        <th scope="row">1</th>
-        <td th:text="${student.id}"></td>
-        <td th:text="${student.firstName}"></td>
-        <td th:text="${student.email}"></td>
-        <td th:text="${student.lastName}"></td>
-        <td th:text="${student.studyFormat}"></td>
-        <td><a th:href="@{/students.html/update/{id}(id=${student.id})}">update</a></td>
-        <td>
-            <form th:method="delete" th:action="@{/students.html/delete/{id}(id=${student.id})}"
-            ><input type="submit" value="delete"></form>
-        </td>
-    </tr>
-    </tbody>
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Study Format</th>
+    <!--        <th scope="col"></th>-->
+    <th scope="col">Update</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="student:${students}">
+    <th scope="row">1</th>
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.firstName}"></td>
+    <td th:text="${student.email}"></td>
+    <td th:text="${student.lastName}"></td>
+    <td th:text="${student.studyFromat}"></td>
+    <!--        <td><a th:href="@{/company/companies/{id}(id=${course.getId()})}">Courses</a></td>-->
+    <td><a th:href="@{/students/update/{id}(id=${student.id})}">update</a></td>
+    <td><form th:method="delete" th:action="@{/students/delete/{id}(id=${student.id})}"
+    ><input type="submit" value="delete"></form>
+    </td>
+  </tr>
+  </tbody>
 </table>
-<a class="btn btn--md" href="/students/addStudent">add Student</a>
+<a class="btn btn--md" href="/students/addStudent">add Course</a>
 <br><br>
 <a class="btn btn--md" href="/">go back</a>
 </body>

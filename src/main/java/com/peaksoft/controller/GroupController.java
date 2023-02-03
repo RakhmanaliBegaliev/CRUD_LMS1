@@ -22,29 +22,34 @@ public class GroupController {
         model.addAttribute("groups", groupService.getAllGroups());
         return "group/groups";
     }
+
     @GetMapping("/addGroup")
-    public String add(Model model){
+    public String add(Model model) {
         model.addAttribute("group", new Group());
         return "group/addGroup";
     }
+
     @PostMapping("/saveGroup")
-    public String save(@ModelAttribute("group") Group group){
+    public String save(@ModelAttribute("group") Group group) {
         groupService.addGroup(group);
         return "redirect:/groups";
     }
+
     @GetMapping("/update/{id}")
-    public String update(@PathVariable("id") Long id, Model model){
+    public String update(@PathVariable("id") Long id, Model model) {
         Group group = groupService.getById(id);
         model.addAttribute("group", group);
         return "group/updateGroup";
     }
+
     @PatchMapping("/{id}")
-    public String updateGroup(@PathVariable("id") Long id, @ModelAttribute("group") Group group){
+    public String updateGroup(@PathVariable("id") Long id, @ModelAttribute("group") Group group) {
         groupService.updateGroup(id, group);
         return "redirect:/groups";
     }
+
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id){
+    public String delete(@PathVariable("id") Long id) {
         Group group = groupService.getById(id);
         groupService.deleteGroup(group);
         return "redirect:/groups";

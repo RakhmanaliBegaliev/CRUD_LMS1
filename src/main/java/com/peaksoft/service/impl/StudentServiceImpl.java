@@ -10,14 +10,12 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-
     private final StudentDao studentDao;
 
     @Autowired
     public StudentServiceImpl(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
-
 
     @Override
     public List<Student> getAllStudents() {
@@ -26,12 +24,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void addStudent(Student student) {
-    studentDao.addStudent(student);
+        studentDao.addStudent(student);
     }
 
     @Override
     public void updateStudent(Long id, Student student) {
-    studentDao.updateStudent(id, student);
+        studentDao.updateStudent(id, student);
     }
 
     @Override
@@ -41,6 +39,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Student student) {
-    studentDao.deleteStudent(student);
+        studentDao.deleteStudent(student);
     }
 }

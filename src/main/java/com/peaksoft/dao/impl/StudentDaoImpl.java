@@ -31,7 +31,7 @@ public class StudentDaoImpl implements StudentDao {
         student1.setFirstName(student.getFirstName());
         student1.setEmail(student.getEmail());
         student1.setLastName(student.getLastName());
-        student1.setStudyFormat(student.getStudyFormat());
+        student1.setStudyFromat(student.getStudyFromat());
         entityManager.merge(student);
     }
 
@@ -42,8 +42,6 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void deleteStudent(Student student) {
-        entityManager.remove(student);
+        entityManager.remove(entityManager.contains(student) ? student : entityManager.merge(student));
     }
 }
-
-

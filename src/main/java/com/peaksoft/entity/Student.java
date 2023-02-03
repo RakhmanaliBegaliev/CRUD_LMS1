@@ -22,8 +22,5 @@ public class Student {
     @Column(name = "last_name")
     private String lastName;
     @Enumerated
-    private StudyFormat studyFormat;
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "group_id")
-    private Group group;
+    private StudyFromat studyFromat;
 }
