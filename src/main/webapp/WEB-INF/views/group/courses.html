@@ -18,6 +18,12 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+    }
+    .form-control{
+      background: white;
+    }
+    .form-label{
+      color: white;
     }.btn{
        text-align: right;
        display: inline-block;
@@ -42,36 +48,19 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Email</th>
-    <th scope="col">Last Name</th>
-    <th scope="col">Study Format</th>
-    <th scope="col">Group Name</th>
-    <th scope="col">Update</th>
-    <th scope="col">Delete</th>
+    <th scope="col">Course Name</th>
+    <th scope="col">Duration Month</th>
   </tr>
   </thead>
   <tbody>
-  <tr th:each="student:${students}">
-    <td th:text="${student.id}"></td>
-    <td th:text="${student.firstName}"></td>
-    <td th:text="${student.email}"></td>
-    <td th:text="${student.lastName}"></td>
-    <td th:text="${student.getStudyFormat}"></td>
-    <td th:text="${student.getGroup().getGroupName()}">Group Name</td>
-    <td><a th:href="@{/students/update/{id}(id=${student.id})}">update</a></td>
-    <td><form th:method="delete" th:action="@{/students/delete/{id}(id=${student.id})}"
-    ><input type="submit" value="delete"></form>
-    </td>
-  </tr>
+  <tr th:each="course:${courses}">
+    <td th:text="${course.id}"></td>
+    <td th:text="${course.courseName}"></td>
+    <td th:text="${course.durationMonth}"></td>
   </tbody>
 </table>
-<a class="btn btn--md" href="/students/addStudent">
-  <img src="https://ltdfoto.ru/images/2023/02/04/12.png" alt="12.png" border="0" height="100" />
-</a>
 <br><br>
-<a class="btn btn--md" href="/">
-  <img src="https://ltdfoto.ru/images/2023/02/04/16.png" alt="16.png" border="0" height="100" />
-</a>
+<a class="btn btn--md" href="/groups">
+  <img src="https://ltdfoto.ru/images/2023/02/04/16.png" alt="16.png" border="0" height="100" /></a>
 </body>
 </html>

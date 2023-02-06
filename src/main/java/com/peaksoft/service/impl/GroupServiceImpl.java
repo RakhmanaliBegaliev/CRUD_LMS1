@@ -1,7 +1,9 @@
 package com.peaksoft.service.impl;
 
 import com.peaksoft.dao.GroupDao;
+import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
+import com.peaksoft.entity.Student;
 import com.peaksoft.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,15 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void deleteGroup(Group group) {
         groupDao.deleteGroup(group);
+    }
+
+    @Override
+    public List<Course> getCourseByGroupId(Long id) {
+        return groupDao.getCourseByGroupId(id);
+    }
+
+    @Override
+    public List<Student> getStudentsByGroupId(Long id) {
+        return groupDao.getStudentByGroupId(id);
     }
 }

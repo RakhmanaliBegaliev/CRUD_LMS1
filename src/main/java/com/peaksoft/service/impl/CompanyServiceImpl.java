@@ -1,8 +1,10 @@
 package com.peaksoft.service.impl;
 
 import com.peaksoft.dao.CompanyDao;
+import com.peaksoft.dao.GroupDao;
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Group;
 import com.peaksoft.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.util.List;
 @Service
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyDao companyDao;
+
 
     @Autowired
     public CompanyServiceImpl(CompanyDao companyDao) {
@@ -47,4 +50,5 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Course> getCourseByCompanyId(Long id) {
         return companyDao.getCourseByCompanyId(id);
     }
+
 }

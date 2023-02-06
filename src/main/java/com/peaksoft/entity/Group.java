@@ -3,6 +3,7 @@ package com.peaksoft.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "groups")
@@ -21,4 +22,14 @@ public class Group {
     private String dateOfStart;
     @Column(name = "date_of_finish")
     private String dateOfFinish;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "course_id",
+            joinColumns = @JoinColumn(name = "group_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> courses;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
+    private List<Student> students;
+    @Transient
+    private Long courseId;
 }

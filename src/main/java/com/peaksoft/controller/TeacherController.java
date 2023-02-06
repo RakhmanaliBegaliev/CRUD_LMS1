@@ -1,5 +1,6 @@
 package com.peaksoft.controller;
 
+import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Student;
 import com.peaksoft.entity.Teacher;
 import com.peaksoft.service.TeacherService;
@@ -27,6 +28,7 @@ public class TeacherController {
     @GetMapping("/addTeacher")
     public String add(Model model) {
         model.addAttribute("teacher", new Teacher());
+        model.addAttribute("course", new Course());
         return "teacher/addTeacher";
     }
 
@@ -40,6 +42,7 @@ public class TeacherController {
     public String update(@PathVariable("id") Long id, Model model) {
         Teacher teacher = teacherService.getById(id);
         model.addAttribute("teacher", teacher);
+        model.addAttribute("course", course);
         return "teacher/updateTeacher";
     }
 

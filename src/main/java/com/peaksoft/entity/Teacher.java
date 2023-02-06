@@ -21,4 +21,6 @@ public class Teacher {
     private String email;
     @Column(name = "last_name")
     private String lastName;
+    @OneToOne(mappedBy = "teacher", cascade = CascadeType.ALL)
+    private Course course;
 }

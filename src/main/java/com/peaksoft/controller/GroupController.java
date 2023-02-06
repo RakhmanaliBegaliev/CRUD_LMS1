@@ -1,20 +1,30 @@
 package com.peaksoft.controller;
 
+import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
+import com.peaksoft.entity.Student;
+import com.peaksoft.service.CourseService;
 import com.peaksoft.service.GroupService;
+import com.peaksoft.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("groups")
 public class GroupController {
     private final GroupService groupService;
+    private final CourseService courseService;
+    private final StudentService studentService;
 
     @Autowired
-    public GroupController(GroupService groupService) {
+    public GroupController(GroupService groupService, CourseService courseService, StudentService studentService) {
         this.groupService = groupService;
+        this.courseService = courseService;
+        this.studentService = studentService;
     }
 
     @GetMapping
@@ -26,6 +36,7 @@ public class GroupController {
     @GetMapping("/addGroup")
     public String add(Model model) {
         model.addAttribute("group", new Group());
+        model.addAttribute("courses", courseService.getAllCourses());
         return "group/addGroup";
     }
 
@@ -39,6 +50,7 @@ public class GroupController {
     public String update(@PathVariable("id") Long id, Model model) {
         Group group = groupService.getById(id);
         model.addAttribute("group", group);
+        model.addAttribute("courses", courseService.getAllCourses());
         return "group/updateGroup";
     }
 
@@ -53,5 +65,17 @@ public class GroupController {
         Group group = groupService.getById(id);
         groupService.deleteGroup(group);
         return "redirect:/groups";
+    }
+//    @GetMapping("/courses/{id}")
+//    public String getCourses(@PathVariable("id") Long id, Model model) {
+//        List<Course> courses = groupService.getCourseByGroupId(id);
+//        model.addAttribute("courses", courses);
+//        return "group/courses";
+//    }
+    @GetMapping("/students/{id}")
+    public String getStudents(@PathVariable("id") Long id, Model model) {
+        List<Student> students = groupService.getStudentsByGroupId(id);
+        model.addAttribute("students", students);
+        return "group/students";
     }
 }

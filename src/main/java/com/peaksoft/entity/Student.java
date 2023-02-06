@@ -22,9 +22,10 @@ public class Student {
     @Column(name = "last_name")
     private String lastName;
     @Enumerated(EnumType.STRING)
-    private StudyFromat studyFromat;
-//    @Transient
-//    private Long groupId;
-//    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
-//    private Group group;
+    private StudyFormat studyFormat;
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @JoinColumn(name = "group_id")
+    private Group group;
+    @Transient
+    private Long groupId;
 }

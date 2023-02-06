@@ -31,7 +31,7 @@ public class StudentDaoImpl implements StudentDao {
         student1.setFirstName(student.getFirstName());
         student1.setEmail(student.getEmail());
         student1.setLastName(student.getLastName());
-        student1.setStudyFromat(student.getStudyFromat());
+        student1.setStudyFormat(student.getStudyFormat());
         entityManager.merge(student);
     }
 

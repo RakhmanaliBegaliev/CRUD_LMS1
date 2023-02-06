@@ -51,15 +51,17 @@ public class CompanyController {
         companyService.updateCompany(id, company);
         return "redirect:/companies";
     }
+
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id){
+    public String delete(@PathVariable("id") Long id) {
         Company company = companyService.getById(id);
         companyService.deleteCompany(company);
         return "redirect:/companies";
     }
+
     @GetMapping("/courses/{id}")
-    public String getCourses(@PathVariable("id") Long id, Model model){
-        List<Course> courses=companyService.getCourseByCompanyId(id);
+    public String getCourses(@PathVariable("id") Long id, Model model) {
+        List<Course> courses = companyService.getCourseByCompanyId(id);
         model.addAttribute("courses", courses);
         return "company/courses";
     }
