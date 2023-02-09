@@ -2,6 +2,7 @@ package com.peaksoft.controller;
 
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Student;
 import com.peaksoft.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,4 +66,19 @@ public class CompanyController {
         model.addAttribute("courses", courses);
         return "company/courses";
     }
+
+//    @GetMapping("/students/{id}")
+//    public String getStudentsByCompanyId(@PathVariable("id") Long id, Model model) {
+//        List<Student> students = companyService.getStudentsByCompanyId(id);
+//        model.addAttribute("students", students);
+//        return "company/students";
+//    }
+
+        @GetMapping("/students/{id}")
+        public String size (@PathVariable("id") Long id, Model model){
+            model.addAttribute("students" , companyService.size(id));
+            model.addAttribute("size" , companyService.size(id).size());
+            return "company/students";
+        }
+
 }

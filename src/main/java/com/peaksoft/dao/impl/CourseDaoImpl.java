@@ -33,12 +33,19 @@ public class CourseDaoImpl implements CourseDao {
     public List<Course> getAllCourses() {
         return entityManager.createQuery("from Course").getResultList();
     }
-
+//    Course course = courseService.getById(group.getCourseId());
+//    List<Group> groups = new ArrayList<>();
+//        groups.add(group);
+//        course.setGroups(groups);
+//        entityManager.persist(group);
     @Override
     public void addCourse(Course course) {
-        Company company = companyService.getById(course.getCompanyId());
-        course.setCompany(company);
-        entityManager.persist(course);
+        Group group = groupService.getById(course.getGroupId());
+        List<Group> groups = new ArrayList<>();
+        List<Course> courses = new ArrayList<>();
+        courses.add(course);
+        group.setCourses(courses);
+        course.setGroups(groups);
     }
 
     @Override
@@ -68,7 +75,8 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public Teacher getTeacherById(Long id) {
-        return entityManager.find(Teacher.class, id);
+        return (Teacher) entityManager.createQuery("select t from Teacher t join t.course c where c.id= ?1")
+                .setParameter(1, id).getSingleResult();
     }
 
 

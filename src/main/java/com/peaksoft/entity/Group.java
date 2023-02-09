@@ -22,9 +22,9 @@ public class Group {
     private String dateOfStart;
     @Column(name = "date_of_finish")
     private String dateOfFinish;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
-            name = "course_id",
+            name = "course_groups",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;

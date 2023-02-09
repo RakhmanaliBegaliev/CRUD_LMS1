@@ -16,7 +16,10 @@ public interface GroupDao {
     Group getById(Long id);
 
     void deleteGroup(Group group);
+
     List<Course> getCourseByGroupId(Long id);
+
     List<Student> getStudentByGroupId(Long id);
 
+    List<Student> search(String name, Long id);
 }

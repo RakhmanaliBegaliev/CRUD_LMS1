@@ -35,7 +35,7 @@ public class GroupController {
 
     @GetMapping("/addGroup")
     public String add(Model model) {
-        model.addAttribute("group", new Group());
+        model.addAttribute("group", groupService.getAllGroups());
         model.addAttribute("courses", courseService.getAllCourses());
         return "group/addGroup";
     }
@@ -66,16 +66,22 @@ public class GroupController {
         groupService.deleteGroup(group);
         return "redirect:/groups";
     }
-//    @GetMapping("/courses/{id}")
-//    public String getCourses(@PathVariable("id") Long id, Model model) {
-//        List<Course> courses = groupService.getCourseByGroupId(id);
-//        model.addAttribute("courses", courses);
-//        return "group/courses";
-//    }
+    @GetMapping("/courses/{id}")
+    public String getCourses(@PathVariable("id") Long id, Model model) {
+        List<Course> courses = groupService.getCourseByGroupId(id);
+        model.addAttribute("courses", courses);
+        return "group/courses";
+    }
     @GetMapping("/students/{id}")
     public String getStudents(@PathVariable("id") Long id, Model model) {
         List<Student> students = groupService.getStudentsByGroupId(id);
         model.addAttribute("students", students);
         return "group/students";
+    }
+    @GetMapping("/search/{name}")
+    public String search(@PathVariable("groupId") Long groupId, Model model, @RequestParam ("firstName") String firstName){
+       List <Student> student = groupService.search(firstName, groupId);
+        model.addAttribute("students", student);
+        return "group/search";
     }
 }

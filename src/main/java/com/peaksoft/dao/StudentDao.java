@@ -6,7 +6,8 @@ import com.peaksoft.entity.Student;
 import java.util.List;
 
 public interface StudentDao {
-    List<Student>getAllStudents();
+    List<Student> getAllStudents();
+
     void addStudent(Student student);
 
     void updateStudent(Long id, Student student);
@@ -14,5 +15,4 @@ public interface StudentDao {
     Student getById(Long id);
 
     void deleteStudent(Student student);
-
 }

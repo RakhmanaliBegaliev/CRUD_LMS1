@@ -5,6 +5,7 @@ import com.peaksoft.dao.GroupDao;
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
+import com.peaksoft.entity.Student;
 import com.peaksoft.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,16 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Course> getCourseByCompanyId(Long id) {
         return companyDao.getCourseByCompanyId(id);
     }
+
+//    @Override
+//    public List<Student> getStudentsByCompanyId(Long id) {
+//        return companyDao.size(id);
+//    }
+
+    @Override
+    public List<Student> size(Long id) {
+        return companyDao.size(id);
+    }
+
 
 }

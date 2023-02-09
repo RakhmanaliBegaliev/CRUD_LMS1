@@ -3,6 +3,7 @@ package com.peaksoft.dao.impl;
 import com.peaksoft.dao.CompanyDao;
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Student;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -50,4 +51,27 @@ public class CompanyDaoImpl implements CompanyDao {
                 .setParameter(1, id).getResultList();
         return courses;
     }
+
+//    @Override
+//    public List<Student> getStudentsByCompanyId(Long id) {
+//        List<Student> students = entityManager.createQuery("select s from Student s join " +
+//                        " s.group g join g.courses c join c.company com where com.id=?1")
+//                .setParameter(1, id).getResultList();
+//        return students;
+//    }
+
+    @Override
+    public List<Student> size(Long id) {
+        List<Student>students = entityManager.createQuery("select s from Student s join" +
+                " s.group g join g.courses c join c.company com where com.id=?1").setParameter(1, id).getResultList();
+        return students;
+    }
+
+//    @Override
+//    public List<Student> getStudentsByCompanyId(Long id) {
+//        List<Student> students = entityManager.createQuery("select s from Student s join " +
+//                        " s.group g join g.courses c join c.company com where com.id=?1")
+//                .setParameter(1, id).getResultList();
+//        return students;
+//    }
 }

@@ -53,4 +53,12 @@ public class GroupServiceImpl implements GroupService {
     public List<Student> getStudentsByGroupId(Long id) {
         return groupDao.getStudentByGroupId(id);
     }
+
+    @Override
+    public List<Student> search(String name, Long groupId) {
+        return  groupDao.search(name, groupId);
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.peaksoft.controller;
 
 import com.peaksoft.entity.Student;
+import com.peaksoft.service.GroupService;
 import com.peaksoft.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("students")
 public class StudentController {
     private final StudentService studentService;
+    private final GroupService groupService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, GroupService groupService) {
         this.studentService = studentService;
+        this.groupService = groupService;
     }
 
 
@@ -27,6 +30,7 @@ public class StudentController {
     @GetMapping("/addStudent")
     public String add(Model model) {
         model.addAttribute("student", new Student());
+        model.addAttribute("groups", groupService.getAllGroups());
         return "student/addStudent";
     }
 
@@ -40,6 +44,7 @@ public class StudentController {
     public String update(@PathVariable("id") Long id, Model model) {
         Student student = studentService.getById(id);
         model.addAttribute("student", student);
+        model.addAttribute("groups", groupService.getAllGroups());
         return "student/updateStudent";
     }
 

@@ -19,4 +19,5 @@ public interface GroupService {
     List<Course> getCourseByGroupId(Long id);
 
     List<Student> getStudentsByGroupId(Long id);
+    List<Student>search(String name, Long groupId);
 }

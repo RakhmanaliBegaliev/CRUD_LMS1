@@ -23,7 +23,7 @@ public class Student {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private StudyFormat studyFormat;
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "group_id")
     private Group group;
     @Transient

@@ -1,6 +1,8 @@
 package com.peaksoft.dao.impl;
 
 import com.peaksoft.dao.TeacherDao;
+import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Student;
 import com.peaksoft.entity.Teacher;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +45,22 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void deleteTeacher(Teacher teacher) {
         entityManager.remove(entityManager.contains(teacher) ? teacher : entityManager.merge(teacher));
+        //entityManager.remove(teacher);
     }
+
+    @Override
+    public Course getByTeacherId(Long id) {
+        return (Course) entityManager.createQuery("select c from Course c join c.teacher t where t.id=?1").setParameter(1,id)
+                .getSingleResult();
+    }
+
+    @Override
+    public List<Student> sizeOfStudents(Long id) {
+        List<Student>students = entityManager.createQuery("select s from Student s join" +
+                " s.group g join g.courses c join c.teacher t where t.id=?1").setParameter(1, id).getResultList();
+        return students;
+    }
+
 }
+//    List<Student>students = entityManager.createQuery("select s from Student s join" +
+//            " s.group g join g.courses c join c.teacher t where t.id=?1").setParameter(1,id).getResultList();
