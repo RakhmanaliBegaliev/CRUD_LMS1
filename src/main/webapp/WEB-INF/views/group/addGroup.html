@@ -47,25 +47,22 @@
 <form th:action="@{/groups/saveGroup}"
       th:method="post"
       th:object="${group}">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Group Name</label>
-        <input type="text" th:field="*{groupName}" class="form-control" id="exampleInputEmail1"
-               aria-describedby="emailHelp">
+    <div class="form-group">
+        <label for="exampleInputEmail1">name of new group</label>
+        <input type="text" th:field="*{groupName}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name of new group">
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">date of Start</label>
-        <input type="text" th:field="*{dateOfStart}" class="form-control" id="exampleInputPassword1">
+    <div class="form-group">
+        <label for="exampleInputPassword1">Starts</label>
+        <input type="text" th:field="*{dateOfStart}" class="form-control" id="exampleInputPassword1" placeholder="date of start">
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword2" class="form-label">date of Finish</label>
-        <input type="text" th:field="*{dateOfFinish}" class="form-control" id="exampleInputPassword2">
+    <div class="form-group">
+        <label for="exampleInputPassword1">Finishes</label>
+        <input type="text" th:field="*{dateOfFinish}" class="form-control" id="exampleInputPassword2" placeholder="date of finish">
     </div>
-    <select th:field="${group.courseId}">
-        <option th:each="course:${courses}"
-                th:value="${course.id}"
-                th:text="${course.courseName}">
-        </option>
-    </select>
+    <br><select th:field="${group.courseId}">
+    <option th:each="course:${courses}"
+            th:value="${course.id}"
+            th:text="${course.courseName}"></option></select>
 
     <button type="submit" class="btn btn--md">
         <img src="https://ltdfoto.ru/images/2023/02/04/17.png" alt="17.png" border="0" height="100" />

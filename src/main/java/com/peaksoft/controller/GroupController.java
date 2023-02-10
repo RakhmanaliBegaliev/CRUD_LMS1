@@ -35,14 +35,14 @@ public class GroupController {
 
     @GetMapping("/addGroup")
     public String add(Model model) {
-        model.addAttribute("group", groupService.getAllGroups());
+        model.addAttribute("group", new Group());
         model.addAttribute("courses", courseService.getAllCourses());
         return "group/addGroup";
     }
 
     @PostMapping("/saveGroup")
     public String save(@ModelAttribute("group") Group group) {
-        groupService.addGroup(group);
+        groupService.addGroup(group, group.getCourseId());
         return "redirect:/groups";
     }
 

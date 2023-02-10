@@ -24,28 +24,16 @@ public class CourseDaoImpl implements CourseDao {
     private CompanyService companyService;
     private GroupService groupService;
 
-    @Autowired
-    public CourseDaoImpl(CompanyService companyService) {
-        this.companyService = companyService;
-    }
+
 
     @Override
     public List<Course> getAllCourses() {
         return entityManager.createQuery("from Course").getResultList();
     }
-//    Course course = courseService.getById(group.getCourseId());
-//    List<Group> groups = new ArrayList<>();
-//        groups.add(group);
-//        course.setGroups(groups);
-//        entityManager.persist(group);
+
     @Override
     public void addCourse(Course course) {
-        Group group = groupService.getById(course.getGroupId());
-        List<Group> groups = new ArrayList<>();
-        List<Course> courses = new ArrayList<>();
-        courses.add(course);
-        group.setCourses(courses);
-        course.setGroups(groups);
+        entityManager.persist(course);
     }
 
     @Override

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -66,6 +66,11 @@
     <button type="submit" class="btn btn-primary">
         <img src="https://ltdfoto.ru/images/2023/02/04/17.png" alt="17.png" border="0" height="100" />
     </button>
+    <select th:field="${teacher.courseId}">
+        <option th:each="course:${courses}"
+                th:value="${course.id}"
+                th:text="${course.courseName}"></option>
+    </select>
 </form>
 <a class="btn btn-primary" href="/teachers/addTeacher" >
     <img src="https://ltdfoto.ru/images/2023/02/04/16.png" alt="16.png" border="0" height="100" />

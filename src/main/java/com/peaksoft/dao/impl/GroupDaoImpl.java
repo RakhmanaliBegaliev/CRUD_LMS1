@@ -40,7 +40,6 @@ public class GroupDaoImpl implements GroupDao {
         course.setGroups(groups);
         group.setCourses(courses);
         entityManager.persist(group);
-
     }
 
     @Override

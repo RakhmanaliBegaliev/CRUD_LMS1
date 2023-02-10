@@ -1,6 +1,8 @@
 package com.peaksoft.service.impl;
 
+import com.peaksoft.dao.CompanyDao;
 import com.peaksoft.dao.CourseDao;
+import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
 import com.peaksoft.entity.Teacher;
@@ -13,10 +15,12 @@ import java.util.List;
 @Service
 public class CourseServiceImpl implements CourseService {
     private final CourseDao courseDao;
+    private final CompanyDao companyDao;
 
     @Autowired
-    public CourseServiceImpl(CourseDao courseDao) {
+    public CourseServiceImpl(CourseDao courseDao, CompanyDao companyDao) {
         this.courseDao = courseDao;
+        this.companyDao = companyDao;
     }
 
     @Override
@@ -25,12 +29,15 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void addCourse(Course course) {
+    public void addCourse(Course course, Long companyId) {
+        Company company = companyDao.getById(companyId);
+        course.setCompany(company);
         courseDao.addCourse(course);
     }
 
-    @Override
-    public void updateCourse(Long id, Course course) {
+    public void updateCourse(Long id, Course course, Long companyId) {
+        Company company = companyDao.getById(companyId);
+        course.setCompany(company);
         courseDao.updateCourse(id, course);
     }
 

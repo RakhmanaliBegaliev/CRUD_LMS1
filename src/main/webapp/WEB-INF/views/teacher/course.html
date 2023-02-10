@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+      border: 0;
+    }
+
+    body {
+      background-image: url("https://ltdfoto.ru/images/2023/02/04/Ali-FON-2-2.jpg");
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .btn {
+      text-align: right;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 8px 16px;
+
+      background: #151D39;
+      border-radius: 8px;
+
+      font-family: inherit;
+      font-size: 5px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn--md {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+<table class="table table-dark table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Course Name</th>
+    <th scope="col">Duration Month</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:object="${course}">
+    <td th:text="${course.id}"></td>
+    <td th:text="${course.courseName}"></td>
+    <td th:text="${course.durationMonth}"></td>
+  </tbody>
+</table>
+</body>
+</html>

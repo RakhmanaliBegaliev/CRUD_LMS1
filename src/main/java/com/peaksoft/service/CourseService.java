@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface CourseService {
     List<Course> getAllCourses();
-    void addCourse(Course course);
-    void updateCourse(Long id, Course course);
+    void addCourse(Course course, Long companyId);
+    void updateCourse(Long id, Course course, Long companyId);
     Course getById(Long id);
     void deleteCourse(Course course);
     List<Group> getGroupByCourseId(Long id);

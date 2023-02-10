@@ -19,21 +19,20 @@ import java.util.List;
 public class CourseController {
     private final CourseService courseService;
     private final CompanyService companyService;
-    private final GroupService groupService;
-    private final TeacherService teacherService;
+//    private final GroupService groupService;
+//    private final TeacherService teacherService;
 
     @Autowired
-    public CourseController(CourseService courseService, CompanyService companyService, GroupService groupService, TeacherService teacherService) {
+    public CourseController(CourseService courseService, CompanyService companyService) {
         this.courseService = courseService;
         this.companyService = companyService;
-        this.groupService = groupService;
-        this.teacherService = teacherService;
+
     }
 
     @GetMapping()
     public String courses(Model model ) {
         model.addAttribute("courses", courseService.getAllCourses());
-        //model.addAttribute("company", companyService.getById(id));
+//        model.addAttribute("company", companyService.getById(id));
         return "course/courses";
     }
 
@@ -46,7 +45,7 @@ public class CourseController {
 
     @PostMapping("/saveCourse")
     public String save(@ModelAttribute("course") Course course) {
-        courseService.addCourse(course);
+        courseService.addCourse(course, course.getCompanyId());
         return "redirect:/courses";
     }
 
@@ -60,7 +59,7 @@ public class CourseController {
 
     @PatchMapping("/{id}")
     public String updateCourse(@PathVariable("id") Long id, @ModelAttribute("course") Course course) {
-        courseService.updateCourse(id, course);
+        courseService.updateCourse(id, course, course.getCompanyId());
         return "redirect:/courses";
     }
 
@@ -70,11 +69,11 @@ public class CourseController {
         courseService.deleteCourse(course);
         return "redirect:/courses";
     }
-    @GetMapping("/groups/{id}")
-    public String getGroups(@PathVariable("id") Long id, Model model) {
-        List<Group> groups = courseService.getGroupByCourseId(id);
-        model.addAttribute("groups", groups);
-        return "course/groups";
-    }
+//    @GetMapping("/groups/{id}")
+//    public String getGroups(@PathVariable("id") Long id, Model model) {
+//        List<Group> groups = courseService.getGroupByCourseId(id);
+//        model.addAttribute("groups", groups);
+//        return "course/groups";
+//    }
 
 }

@@ -61,9 +61,8 @@ public class CompanyController {
     }
 
     @GetMapping("/courses/{id}")
-    public String getCourses(@PathVariable("id") Long id, Model model) {
-        List<Course> courses = companyService.getCourseByCompanyId(id);
-        model.addAttribute("courses", courses);
+    public String getCourses(@PathVariable("id")Long id, Model model){
+        model.addAttribute("courses", companyService.getCourseByCompanyId(id));
         return "company/courses";
     }
 

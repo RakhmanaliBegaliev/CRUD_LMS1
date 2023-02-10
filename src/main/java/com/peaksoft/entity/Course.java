@@ -21,12 +21,12 @@ public class Course {
     private String courseName;
     @Column(name = "duration_month")
     private String durationMonth;
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "company_id")
     private Company company;
     @ManyToMany(cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
-            name = "course_groups",
+            name = "courses_groups",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
     private List<Group> groups;
@@ -34,14 +34,14 @@ public class Course {
     private Long groupId;
     @Transient
     private Long companyId;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "course")
+    @OneToOne(cascade = CascadeType.REFRESH, mappedBy = "course")
     private Teacher teacher;
 
-    public String teacher(){
-        if (this.teacher==null){
-            return " ";
-        }else {
-            return teacher.getFirstName()+" "+teacher.getLastName();
-        }
-    }
+//    public String teacher(){
+//        if (this.teacher==null){
+//            return " ";
+//        }else {
+//            return teacher.getFirstName()+" "+teacher.getLastName();
+//        }
+//    }
 }

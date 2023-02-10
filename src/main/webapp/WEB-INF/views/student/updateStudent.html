@@ -60,10 +60,19 @@
         <label for="exampleInputPassword2" class="form-label">last name</label>
         <input type="text" th:field="*{lastName}" class="form-control" id="exampleInputPassword2">
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword3" class="form-label">study format</label>
-        <input type="text" th:field="*{getStudyFormat()}" class="form-control" id="exampleInputPassword3">
+    <div class="radio-button" >
+        <input type="radio" value="ONLINE" th:field="*{studyFormat}"
+               id="onlineFormat">
+        <label for="onlineFormat">ONLINE</label>
+        <input type="radio" value="OFFLINE" th:field= "*{studyFormat}"
+               id="offlineFormat">
+        <label for="offlineFormat">OFFLINE</label>
     </div>
+    <select th:field="${student.groupId}">
+        <option th:each="group:${groups}"
+                th:value="${group.id}"
+                th:text="${group.groupName}"></option>
+    </select>
     <button type="submit" class="btn btn-primary">
         <img src="https://ltdfoto.ru/images/2023/02/04/17.png" alt="17.png" border="0" height="100" />
     </button>

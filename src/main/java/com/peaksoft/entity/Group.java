@@ -24,7 +24,7 @@ public class Group {
     private String dateOfFinish;
     @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
-            name = "course_groups",
+            name = "courses_groups",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courses;

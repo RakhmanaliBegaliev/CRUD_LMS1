@@ -68,10 +68,16 @@
         id="offlineFormat">
         <label for="offlineFormat">OFFLINE</label>
     </div>
+    <select th:field="${student.groupId}">
+        <option th:each="group:${groups}"
+                th:value="${group.id}"
+                th:text="${group.groupName}"></option>
+    </select>
     <button type="submit" class="btn btn--md">
         <img src="https://ltdfoto.ru/images/2023/02/04/17.png" alt="17.png" border="0" height="100" />
     </button>
 </form>
+
 <br><br>
 <a class="btn btn--md" href="/students">
     <img src="https://ltdfoto.ru/images/2023/02/04/16.png" alt="16.png" border="0" height="100" />

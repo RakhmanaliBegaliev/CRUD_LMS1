@@ -30,6 +30,7 @@
         <th scope="col">Email</th>
         <th scope="col">Last Name</th>
         <th scope="col">Course</th>
+        <th scope="col">Size of Students</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
@@ -40,7 +41,8 @@
         <td th:text="${teacher.firstName}"></td>
         <td th:text="${teacher.email}"></td>
         <td th:text="${teacher.lastName}"></td>
-        <td th:text="${teacher.getCourse().getCourseName()}">Course</td>
+        <td ><a th:href="@{/teachers/course/{id}(id=${teacher.getId()})}">Course</a></td>
+        <td ><a th:href="@{/teachers/students/{id}(id=${teacher.getId})}">size of students</a></td>
         <td><a th:href="@{/teachers/update/{id}(id=${teacher.id})}">update</a></td>
         <td><form th:method="delete" th:action="@{/teachers/delete/{id}(id=${teacher.id})}"
         ><input type="submit" value="delete"></form>

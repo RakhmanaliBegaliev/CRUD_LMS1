@@ -1,5 +1,6 @@
 package com.peaksoft.service.impl;
 
+import com.peaksoft.dao.CourseDao;
 import com.peaksoft.dao.GroupDao;
 import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
@@ -13,10 +14,12 @@ import java.util.List;
 @Service
 public class GroupServiceImpl implements GroupService {
     private final GroupDao groupDao;
+    private final CourseDao courseDao;
 
     @Autowired
-    public GroupServiceImpl(GroupDao groupDao) {
+    public GroupServiceImpl(GroupDao groupDao, CourseDao courseDao) {
         this.groupDao = groupDao;
+        this.courseDao = courseDao;
     }
 
     @Override
@@ -25,7 +28,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void addGroup(Group group) {
+    public void addGroup(Group group, Long courseId) {
+        Course course = courseDao.getById(courseId);
+        group.setCourseId(courseId);
         groupDao.addGroup(group);
     }
 
